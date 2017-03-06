@@ -22,7 +22,7 @@ $(function(){
 		goPage('${context}/home.do','move','main');
 	});
 	commonGnb.find('li:nth-child(2)').click(function(){/* 콜백함수 */
-		goPage('${context}/board.do','list','articleList');
+		goList('${context}/board.do','list','articleList','1');
 	});
 	commonGnb.find('li:nth-child(3)').click(function(){
 		goPage('${context}/admin.do','move','login');

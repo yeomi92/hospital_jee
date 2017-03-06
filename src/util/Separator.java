@@ -3,7 +3,7 @@ package util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.Command;
+import command.Command;
 import factory.CommandFactory;
 
 public class Separator {
@@ -14,6 +14,11 @@ public class Separator {
 		String directory=path.substring(0,path.indexOf("."));
 		String action=request.getParameter("action");
 		String page=request.getParameter("page");
-		command=factory.createCommand(directory, action, page);
+		String pageNO=request.getParameter("pageNO");
+		if(pageNO==null){
+			command=factory.createCommand(directory, action, page);
+		}else{
+			command=factory.createCommand(directory, action, page,pageNO);
+		}
 	}
 }

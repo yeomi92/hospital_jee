@@ -58,10 +58,10 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<ArticleBean> selectAll() throws Exception {
+	public List<ArticleBean> selectAll(String[] pageArr) throws Exception {
 		ArticleBean temp=null;
 		List<ArticleBean> list=new ArrayList<ArticleBean>();
-		ResultSet rs=DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery("SELECT art_seq,pat_id,title,content,regdate,read_count FROM article");
+		ResultSet rs=DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(String.format("select t2.* from (select rownum seq,t.* from (select * from article order by art_seq desc) t) t2 where t2.seq between %s and %s", pageArr[0],pageArr[1]));
 		while(rs.next()){
 			temp=new ArticleBean();
 			temp.setSeq(rs.getString("art_seq"));
@@ -84,6 +84,18 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int delete(ArticleBean param) throws Exception {
 		return DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("DELETE FROM article WHERER art_seq='%s'",param.getSeq()));
+	}
+	@Override
+	public int count() throws Exception {
+		int count=0;
+		String sql="SELECT COUNT(*) AS count FROM Article";
+		Statement stmt=DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME, Database.PASSWORD)
+				.getConnection().createStatement();
+		ResultSet rs=stmt.executeQuery(sql);
+		if(rs.next()){
+			count=Integer.parseInt(rs.getString("COUNT"));
+		}
+		return count;
 	}
 
 }

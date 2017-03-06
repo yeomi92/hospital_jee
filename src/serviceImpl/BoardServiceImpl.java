@@ -45,8 +45,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<ArticleBean> boardList() throws Exception {
-		return dao.selectAll();
+	public List<ArticleBean> boardList(String[] pageArr) throws Exception {
+		return dao.selectAll(pageArr);
 	}
 
 	@Override
@@ -75,5 +75,17 @@ public class BoardServiceImpl implements BoardService{
 		}
 		this.seq=seq;
 		return rs;
+	}
+
+	@Override
+	public int count() {
+		int count=0;
+		try {
+			count = dao.count();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 }
