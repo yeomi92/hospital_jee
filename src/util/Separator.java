@@ -15,9 +15,15 @@ public class Separator {
 		String action=request.getParameter("action");
 		String page=request.getParameter("page");
 		String pageNO=request.getParameter("pageNO");
+		System.out.println("separaor에서 pageNO: "+pageNO);
 		if(pageNO==null){
+			System.out.println("pageNO이 null 일때");
 			command=factory.createCommand(directory, action, page);
+			System.out.println("directory: "+directory);
+			System.out.println("action: "+action);
+			System.out.println("page: "+page);
 		}else{
+			System.out.println("pageNO있을때");
 			command=factory.createCommand(directory, action, page,pageNO);
 		}
 	}

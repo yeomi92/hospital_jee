@@ -2,7 +2,7 @@
 <div id="commonGnb">
 	<ul>
 		<li><a>홈으로</a></li>
-		<li><a>게시판</a></li>
+		<li><a href="${context}/board.do?action=list&page=articleList&pageNO=1">게시판</a></li>
 		<li><a>관리자</a></li>
 		<li>
 			<div>

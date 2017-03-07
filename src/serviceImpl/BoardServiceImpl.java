@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<ArticleBean> boardList(String[] pageArr) throws Exception {
+	public List<ArticleBean> boardList(String[] pageArr){
 		return dao.selectAll(pageArr);
 	}
 

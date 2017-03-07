@@ -6,14 +6,7 @@ import command.MoveCommand;
 
 public class CommandFactory {
 	public Command createCommand(String directory,String action,String page){
-		Command command=null;
-		switch (action) {
-		case "move":
-			command=new MoveCommand(directory, action, page);
-			break;
-		default:
-			break;
-		}
+		Command command=new MoveCommand(directory, action, page);
 		return command;
 	}
 	public Command createCommand(String directory,String action,String page,String pageNO){

@@ -2,7 +2,7 @@
 <div class="gnb width_full_size">
 	<ul style="margin: 0px;">
 		<li><a class="text_no_underline color_black" href="${context}/home.do?action=move&page=loginMain">홈으로</a></li>
-		<li><a class="text_no_underline color_black" href="${context}/board.do?action=move&page=articleList">게시판</a></li>
+		<li><a class="text_no_underline color_black" href="${context}/board.do?action=list&page=articleList&pageNO=1">게시판</a></li>
 		<li><a class="text_no_underline color_black" href="${context}/patient.do?action=move&page=treatmentList">진료기록조회</a></li>
 		<li>
 			<div class="tooltip">
